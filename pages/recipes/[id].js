@@ -5,17 +5,18 @@ import styled from 'styled-components'
 const Container = styled.div`
 ${tw `
    text-colorinspo-100
-    flex flex-col text-left w-full pl-4 sm:pl-64 py-8 z-0
+    flex flex-col text-left w-full pl-4 sm:pl-64 py-8 z-0 border border-red-600
 `}
 `
-const SubTitle = styled.div`
+const SubTitle = styled.h1`
 ${tw `
     text-4xl font-semibold 
 `}
 `
+
 const UL = styled.ul `
     ${tw `
-        list-disc ml-8
+        list-disc ml-4
     `}
     li {
         ${tw`text-teal-500`}

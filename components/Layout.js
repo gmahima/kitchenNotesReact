@@ -3,11 +3,14 @@ import tw from 'twin.macro'
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import {getAllRecipes} from '../lib/data'
+import {useState} from 'react'
 
-const Menu = () => (
-    <Svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
-</Svg>
+const Menu = (props) => (
+    <div onClick={props.handleClick}>
+        <Svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </Svg>
+    </div>
 )
 const Header = styled.div`
   ${tw`bg-colorinspo-400 text-xl sm:text-4xl font-semibold sm:font-bold text-colorinspo-200 flex py-4 px-2 justify-between  z-50 fixed w-full`}
@@ -27,7 +30,7 @@ const Div = styled.div`${tw`
 `}
 `
 const Drawer = styled.div`
-${tw `bg-colorinspo-300 h-full min-h-screen w-56 flex flex-col px-2 hidden sm:fixed sm:block overflow-y-auto pb-64`}
+${tw `bg-colorinspo-300 h-full min-h-screen w-56  flex-col px-2 hidden sm:fixed sm:block overflow-y-auto pb-64`}
 h1 {
     ${tw `text-lg font-black mt-4 text-left`}
 }
@@ -41,18 +44,25 @@ li {
     }
 }
 `
-const list = getAllRecipes()
+const Modal = styled(Drawer)`
+${props => {
+    console.log(props)
+    if(props.isModalOpen){
+        return tw`flex w-screen static`
+    }
+    else {
+        return tw`hidden`
+    }
+}}
 
-const NavList = () => {
+`
+const list = getAllRecipes()
+const NavDiv = () => {
     const router = useRouter();
     console.log(router.asPath)
-    return <ul>{list.map(l => <li key={l.id}className={router.asPath == `/recipes/${l.id}` ? "active" : ""}><Link href='/recipes/[id]' as={`/recipes/${l.id}`}>{l.name}</Link></li>)}</ul>
-}
-const NavDiv = () => {
     return (<div>
         <h1>RECIPES</h1>
-        {console.log(list)}
-        <NavList />
+        <ul>{list.map(l => <li key={l.id}className={router.asPath == `/recipes/${l.id}` ? "active" : ""}><Link href='/recipes/[id]' as={`/recipes/${l.id}`}><a>{l.name}</a></Link></li>)}</ul>
     </div>)
 }
 const Content = styled.div`
@@ -60,19 +70,24 @@ const Content = styled.div`
 `
 const Svg =styled.svg`
 ${props => console.log(props)}
-${tw `sm:hidden w-4 h-4`}
+${tw `sm:hidden w-4 h-4 cursor-pointer`}
 
 `
 
+
 const Layout = (props) => {
-  
+    const [isModalOpen, setIsModalOpen] = useState(false)
     return (
         <Container>
+            
             <Header>
                 <Link href="/"><A>Home</A></Link>
                 <Title>#{props.id} {props.name}</Title>
-                <Menu/>
+                <Menu handleClick={() => (setIsModalOpen(!isModalOpen))}/>
             </Header>
+            <Modal isModalOpen={isModalOpen}>
+                <NavDiv />
+            </Modal>
             <Div>
                 <Drawer>
                     <NavDiv/>                  
