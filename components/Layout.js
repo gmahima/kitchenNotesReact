@@ -3,7 +3,7 @@ import tw from 'twin.macro'
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import {getAllRecipes} from '../lib/data'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const Menu = (props) => {
     if(props.isModalOpen) return (
@@ -96,7 +96,9 @@ ${tw `sm:hidden w-4 h-4 cursor-pointer`}
 
 
 const Layout = (props) => {
+    const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false)
+    useEffect(() => {setIsModalOpen(false)}, [router.asPath])
     return (
         <Container>
             
