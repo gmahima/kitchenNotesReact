@@ -26,7 +26,7 @@ export default function Home() {
         <Heading>My Kitchen Notes</Heading>
         <p>A handy kitchen notebook in which I jotted down simple go-to recipes </p>
         <p>Sources: blah blah blah</p>
-        <Link href={"/recipes/[id]"} as="/recipes/1" ><A>Check out recepies</A></Link>
+        <Link href={"/recipes/[id]"} as="/recipes/2" ><A>Check out recepies</A></Link>
       </Container>
       
     </div>
