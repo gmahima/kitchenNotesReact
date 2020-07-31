@@ -46,11 +46,22 @@ li {
 `
 const Modal = styled("div")`
 ${tw `bg-yellow-400`}
+ul {
+    ${tw `text-left font-hairline text-6xl`}
+}
+li {
+    ${tw `py-1 px-2 text-colorinspo-500 rounded`}
+    &.active {
+        ${tw`bg-colorinspo-200 bg-opacity-25`}
+    }
+}
 ${props => {
     console.log(props)
     if(props.isModalOpen){
-        return tw`flex w-screen fixed pb-4 pt-16`
+        return tw`flex w-screen absolute h-screen overflow-y-auto pb-4 pt-64`
     }
+
+
     else {
         return tw`hidden`
     }
