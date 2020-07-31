@@ -46,7 +46,7 @@ const list = getAllRecipes()
 const NavList = () => {
     const router = useRouter();
     console.log(router.asPath)
-    return <ul>{list.map(l => <li key={l.id}className={router.asPath == `/recipes/${l.id}` ? "active" : ""}><Link href='/recipes/[id]' as={`/recipes/${l.id}`}><a>{l.name}</a></Link></li>)}</ul>
+    return <ul>{list.map(l => <li key={l.id}className={router.asPath == `/recipes/${l.id}` ? "active" : ""}><Link href='/recipes/[id]' as={`/recipes/${l.id}`}>{l.name}</Link></li>)}</ul>
 }
 const NavDiv = () => {
     return (<div>
