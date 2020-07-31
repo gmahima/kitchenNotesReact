@@ -16,7 +16,7 @@ const Header = styled.div`
   ${tw`bg-colorinspo-400 text-xl sm:text-4xl font-semibold sm:font-bold text-colorinspo-200 flex py-4 px-2 justify-between  z-50 fixed w-full`}
 `
 const Container = styled.div`
-${tw `min-h-screen h-full flex flex-col bg-colorinspo-500 `}
+${tw `min-h-screen h-full flex flex-col bg-colorinspo-500 relative`}
 `
 const A = styled.a`
 ${tw ` text-xs sm:text-xl font-normal sm:font-bold cursor-pointer`}
@@ -44,11 +44,12 @@ li {
     }
 }
 `
-const Modal = styled(Drawer)`
+const Modal = styled("div")`
+${tw `bg-yellow-400`}
 ${props => {
     console.log(props)
     if(props.isModalOpen){
-        return tw`flex w-screen static`
+        return tw`flex w-screen fixed pb-4 pt-16`
     }
     else {
         return tw`hidden`
