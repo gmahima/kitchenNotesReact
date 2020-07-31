@@ -62,7 +62,7 @@ h1 {
     ${tw `text-sm font-semibold mt-4 text-left mx-1 border-b-2 border-blue-800`}
 }
 ul {
-    ${tw `text-left font-hairline text-xs`}
+    ${tw `text-left font-normal text-xs`}
 }
 ${props => {
     console.log(props)
