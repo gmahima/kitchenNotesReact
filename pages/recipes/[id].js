@@ -10,13 +10,13 @@ ${tw `
 `
 const SubTitle = styled.h1`
 ${tw `
-    text-4xl font-semibold 
+    text-lg sm:text-4xl sm:font-semibold 
 `}
 `
 
 const UL = styled.ul `
     ${tw `
-        list-disc ml-4
+        list-disc ml-4 text-sm font-hairline sm:font-normal sm:text-lg
     `}
     li {
         ${tw`text-teal-500`}
@@ -30,7 +30,7 @@ const Recipe = ({data}) => {
         <Layout name={data.name} id={data.id}>
             <Container>
                 <SubTitle>Ingredients</SubTitle>
-    <UL>{data.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}</UL>
+                    <UL>{data.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}</UL>
                 <SubTitle>Procedure</SubTitle>
                 <PUL>{data.procedure.map((p, i) => <li key={i}>{p}</li>)}</PUL>
             </Container>
