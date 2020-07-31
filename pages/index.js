@@ -6,7 +6,7 @@ const Heading = styled.h1`
   ${tw`text-colorinspo-200 text-4xl text-center  p-4 font-bold `}
 `
 const Container = styled.div`
-${tw `p-4 h-screen flex flex-col items-center justify-center bg-colorinspo-400`}
+${tw `p-4 h-screen flex flex-col items-center justify-center bg-colorinspo-500`}
 p{
   ${tw`text-colorinspo-200 text-lg`}
 }

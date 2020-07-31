@@ -4,7 +4,7 @@ import tw from 'twin.macro'
 import styled from 'styled-components'
 const Container = styled.div`
 ${tw `
-   text-colorinspo-100
+   text-colorinspo-200
     flex flex-col text-left w-full pl-4 sm:pl-64 py-8 z-0 
 `}
 `
@@ -19,7 +19,7 @@ const UL = styled.ul `
         list-disc ml-4 text-sm font-hairline sm:font-normal sm:text-lg
     `}
     li {
-        ${tw`text-teal-500`}
+        ${tw`text-colorinspo-200`}
     }
 `
 const PUL = styled(UL)`${tw `
