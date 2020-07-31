@@ -5,13 +5,25 @@ import { useRouter } from "next/router";
 import {getAllRecipes} from '../lib/data'
 import {useState} from 'react'
 
-const Menu = (props) => (
-    <div onClick={props.handleClick}>
-        <Svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </Svg>
-    </div>
-)
+const Menu = (props) => {
+    if(props.isModalOpen) return (
+        <div onClick={props.handleClick}>
+            <Svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" isModalOpen={props.isModalOpen}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
+            </Svg>
+        </div>
+    )
+    else {
+        return (
+            <div onClick={props.handleClick}>
+            <Svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" isModalOpen={props.isModalOpen}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </Svg>
+        </div>
+        )
+    }
+
+}
 const Header = styled.div`
   ${tw`bg-colorinspo-400 text-xl sm:text-4xl font-semibold sm:font-bold text-colorinspo-200 flex py-4 px-2 justify-between  z-50 fixed w-full`}
 `
@@ -32,33 +44,30 @@ const Div = styled.div`${tw`
 const Drawer = styled.div`
 ${tw `bg-colorinspo-300 h-full min-h-screen w-56  flex-col px-2 hidden sm:fixed sm:block overflow-y-auto pb-64`}
 h1 {
-    ${tw `text-lg font-black mt-4 text-left`}
+    ${tw `text-lg font-black mt-4 text-left mx-1`}
 }
 ul {
     ${tw `text-left font-hairline text-sm`}
 }
 li {
-    ${tw `py-1 px-2 text-colorinspo-500 rounded`}
+    ${tw `py-1 px-1 text-colorinspo-500 rounded`}
     &.active {
         ${tw`bg-colorinspo-200 bg-opacity-25`}
     }
 }
 `
-const Modal = styled("div")`
-${tw `bg-yellow-400`}
-ul {
-    ${tw `text-left font-hairline text-6xl`}
+const Modal = styled(Drawer)`
+${tw `pl-2`}
+h1 {
+    ${tw `text-sm font-semibold mt-4 text-left mx-1 border-b-2 border-blue-800`}
 }
-li {
-    ${tw `py-1 px-2 text-colorinspo-500 rounded`}
-    &.active {
-        ${tw`bg-colorinspo-200 bg-opacity-25`}
-    }
+ul {
+    ${tw `text-left font-hairline text-xs`}
 }
 ${props => {
     console.log(props)
     if(props.isModalOpen){
-        return tw`flex w-screen absolute h-screen overflow-y-auto pb-4 pt-64`
+        return tw`flex sm:hidden w-screen absolute h-screen overflow-y-auto pb-4 pt-12`
     }
 
 
@@ -81,7 +90,6 @@ const Content = styled.div`
 
 `
 const Svg =styled.svg`
-${props => console.log(props)}
 ${tw `sm:hidden w-4 h-4 cursor-pointer`}
 
 `
@@ -95,7 +103,7 @@ const Layout = (props) => {
             <Header>
                 <Link href="/"><A>Home</A></Link>
                 <Title>#{props.id} {props.name}</Title>
-                <Menu handleClick={() => (setIsModalOpen(!isModalOpen))}/>
+                <Menu handleClick={() => (setIsModalOpen(!isModalOpen))} isModalOpen={isModalOpen}/>
             </Header>
             <Modal isModalOpen={isModalOpen}>
                 <NavDiv />
