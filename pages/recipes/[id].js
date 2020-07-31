@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Container = styled.div`
 ${tw `
    text-colorinspo-100
-    flex flex-col text-left w-full pl-4 sm:pl-64 py-8 z-0 border border-red-600
+    flex flex-col text-left w-full pl-4 sm:pl-64 py-8 z-0 
 `}
 `
 const SubTitle = styled.h1`
