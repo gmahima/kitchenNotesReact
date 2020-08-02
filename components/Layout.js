@@ -25,10 +25,10 @@ const Menu = (props) => {
 
 }
 const Header = styled.div`
-  ${tw`bg-colorinspo-400 text-xl sm:text-4xl font-semibold sm:font-bold text-colorinspo-200 flex py-4 px-2 justify-between  z-50 fixed w-full`}
+  ${tw` border-b-2 border-scheme-300  text-xl sm:text-4xl font-semibold sm:font-bold text-scheme-200 flex py-4 px-2 justify-between  z-50 fixed w-full bg-black text-scheme-100`}
 `
 const Container = styled.div`
-${tw `min-h-screen h-full flex flex-col bg-colorinspo-500 relative`}
+${tw `min-h-screen h-full flex flex-col bg-scheme-500 relative`}
 `
 const A = styled.a`
 ${tw ` text-xs sm:text-xl font-normal sm:font-bold cursor-pointer`}
@@ -43,17 +43,17 @@ const Div = styled.div`${tw`
 `
 const Drawer = styled.div`
 
-${tw `bg-colorinspo-300 w-screen h-screen  pb-4 pt-12 flex flex-col px-2 overflow-y-auto  sm:h-full sm:min-h-screen sm:w-56   sm:fixed sm:block sm:pb-64 sm:pt-16`}
+${tw `bg-scheme-600   w-screen h-screen pb-4 pt-12 flex flex-col px-2 overflow-y-auto  sm:h-full sm:min-h-screen sm:w-56   sm:fixed sm:block sm:pb-64 sm:mt-16 sm:pt-0 pl-2 sm:bg-opacity-50`}
 h1 {
-    ${tw `text-sm font-semibold mt-4 text-left mx-1 border-b-2 border-blue-800 sm:text-lg sm:font-black mt-4 mx-1`}
+    ${tw `text-sm font-semibold mt-4 text-left mx-1 sm:text-lg sm:font-black mt-4 mx-1 text-scheme-100`}
 }
 ul {
-    ${tw `text-left font-normal text-xs sm:text-left sm:font-hairline sm:text-sm`}
+    ${tw `text-left font-normal text-xs sm:text-left sm:font-hairline sm:text-sm text-scheme-200`}
 }
 li {
-    ${tw `py-1 px-1 text-colorinspo-500 rounded`}
+    ${tw `py-1 px-1 text-scheme-100 rounded`}
     &.active {
-        ${tw`bg-colorinspo-200 bg-opacity-25`}
+        ${tw`bg-scheme-200 sm:bg-scheme-200 `}
     }
 
 }
