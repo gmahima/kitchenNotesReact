@@ -42,19 +42,32 @@ const Div = styled.div`${tw`
 `}
 `
 const Drawer = styled.div`
-${tw `bg-colorinspo-300 h-full min-h-screen w-56  flex-col px-2 hidden sm:fixed sm:block overflow-y-auto pb-64`}
+
+${tw `bg-colorinspo-300 w-screen h-screen  pb-4 pt-12 flex flex-col px-2 overflow-y-auto  sm:h-full sm:min-h-screen sm:w-56   sm:fixed sm:block sm:pb-64 sm:pt-16`}
 h1 {
-    ${tw `text-lg font-black mt-4 text-left mx-1`}
+    ${tw `text-sm font-semibold mt-4 text-left mx-1 border-b-2 border-blue-800 sm:text-lg sm:font-black mt-4 mx-1`}
 }
 ul {
-    ${tw `text-left font-hairline text-sm`}
+    ${tw `text-left font-normal text-xs sm:text-left sm:font-hairline sm:text-sm`}
 }
 li {
     ${tw `py-1 px-1 text-colorinspo-500 rounded`}
     &.active {
         ${tw`bg-colorinspo-200 bg-opacity-25`}
     }
+
 }
+${props => {
+    console.log(props)
+    if(props.isModalOpen){
+        return tw` absolute `
+    }
+
+
+    else {
+        return tw`hidden`
+    }
+}}
 `
 const Modal = styled(Drawer)`
 ${tw `pl-2`}
@@ -67,7 +80,7 @@ ul {
 ${props => {
     console.log(props)
     if(props.isModalOpen){
-        return tw`flex sm:hidden w-screen absolute h-screen overflow-y-auto pb-4 pt-12`
+        return tw`flex  w-screen absolute h-screen overflow-y-auto pb-4 pt-12`
     }
 
 
@@ -107,13 +120,14 @@ const Layout = (props) => {
                 <Title>#{props.id} {props.name}</Title>
                 <Menu handleClick={() => (setIsModalOpen(!isModalOpen))} isModalOpen={isModalOpen}/>
             </Header>
-            <Modal isModalOpen={isModalOpen}>
+            {/* <Modal isModalOpen={isModalOpen}>
                 <NavDiv />
-            </Modal>
+            </Modal> */}
+            <Drawer isModalOpen={isModalOpen}>
+                <NavDiv/>                  
+            </Drawer>
             <Div>
-                <Drawer>
-                    <NavDiv/>                  
-                </Drawer>
+                
                 <Content>
                     {props.children}
                 </Content>
